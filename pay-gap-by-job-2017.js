@@ -79,12 +79,11 @@ function PayGapByJob2017() {
 
     for (i = 0; i < this.data.getRowCount(); i++) {
       // Draw an ellipse for each point.
-      // x = propFemale
-      // y = payGap
-      // size = numJobs
-      ellipse(
-        /// ???
-      );
+      //basicly all variables are predefined above, we just need to map them:
+       x = map(propFemale[i], propFemaleMin, propFemaleMax, this.pad, width);
+       y = map(payGap[i], payGapMin, payGapMax, height, this.pad); //remember this.pad last
+       size = map(numJobs[i], numJobsMin, numJobsMax, this.dotSizeMin, this.dotSizeMax);
+      ellipse(x,y,size);
     }
   };
 

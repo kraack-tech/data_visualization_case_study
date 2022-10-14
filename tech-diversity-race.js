@@ -30,14 +30,28 @@ function TechDiversityRace() {
     }
 
     // Create a select DOM element.
-    // this.select = // ???
+    this.select = createSelect(),
 
     // Set select position.
-    // ???
+    this.select.position(400, 60),
+    this.select.size(this.select.position);
 
-    // Fill the options with all company names.
-    // ???
-  };
+  /*  // Fill the options with all company names. (Hardcoded)
+    this.select.option('AirBnB'),this.select.option('Amazon'),this.select.option('Apple'),this.select.option('Cisco'),this.select.option('Dell'),
+    this.select.option('Etsy'),this.select.option('Facebook'),this.select.option('Flickr'),this.select.option('Google'),this.select.option('Groupon'),
+    this.select.option('HP'),this.select.option('Indiegogo'),this.select.option('Ingram Micro'),this.select.option('Instagram'),this.select.option('Intel'),
+    this.select.option('LinkedIn'),this.select.option('Microsoft'),this.select.option('Netflix'),this.select.option('Nvidia'),this.select.option('Pandora'),
+    this.select.option('Pinterest'),this.select.option('Salesforce'),this.select.option('Slack'),this.select.option('Tumblr'),this.select.option('Twitter'),
+    this.select.option('Uber'),this.select.option('Yahoo!'),this.select.option('Yelp'),this.select.option('YouTube'),this.select.option('eBay');
+  */
+    
+    // Fill the options with all company names with a for loop.
+    // start from 1 (to get AirBnB as shows in assignment), because 0 is blank
+    for (var i = 1; i < this.data.getColumnCount(); i++) {
+      this.select.option(this.data.columns[i]);
+    }
+  }; 
+
 
     this.destroy = function() {
     this.select.remove();
@@ -55,7 +69,7 @@ function TechDiversityRace() {
     // Get the value of the company we're interested in from the
     // select item.
     // Use a temporary hard-code example for now.
-    var companyName = 'Facebook';
+    var companyName = this.select.value();
 
     // Get the column of raw data for companyName.
     var col = this.data.getColumn(companyName);

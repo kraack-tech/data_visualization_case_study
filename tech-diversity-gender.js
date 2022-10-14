@@ -52,12 +52,15 @@ function TechDiversityGender() {
       function(table) {
         self.loaded = true;
       });
+      //add console log to verify data under testing
+      //console.log(this.data);
 
   };
 
   this.setup = function() {
     // Font defaults.
     textSize(16);
+
   };
 
   this.destroy = function() {
@@ -83,10 +86,10 @@ function TechDiversityGender() {
 
       // Create an object that stores data from the current row.
       var company = {
-        // Convert strings to numbers.
-        // 'name': ???
-        // 'female': ???
-        // 'male': ???
+        // load data and store into company variable, then Convert strings to numbers.
+        'name': this.data.getString(i, 'company'),
+        'female': this.data.getNum(i, 'female'),
+        'male': this.data.getNum(i, 'male'),
       };
 
       // Draw the company name in the left margin.
@@ -105,7 +108,11 @@ function TechDiversityGender() {
            lineHeight - this.layout.pad);
 
       // Draw male employees rectangle.
-      // ???
+      fill(this.maleColour);
+      rect(this.mapPercentToWidth(company.female) + this.layout.leftMargin,
+           lineY,
+           this.mapPercentToWidth(company.male),
+           lineHeight - this.layout.pad);
     }
 
     // Draw 50% line
